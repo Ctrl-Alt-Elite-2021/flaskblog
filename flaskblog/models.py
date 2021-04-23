@@ -3,6 +3,7 @@ from flaskblog import db, login_manager
 from flask_login import UserMixin
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -49,6 +50,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     comments = db.Column(db.Integer, default=0)
+    # likes = db.relationship('PostLike', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
@@ -73,4 +75,7 @@ class PostLike(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
-    post_like = db.Column(db.Integer, default=0)
+    post_like = db.Column(db.Integer)
+
+    # def __repr__(self):
+    #     return f"PostLike('{self.post_id}', '{self.post_like}')"

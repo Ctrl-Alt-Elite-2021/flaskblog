@@ -251,7 +251,7 @@ def contact():
 
 
 @app.route('/post/<int:post_id>/<action>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def like_action(post_id, action):
     post = Post.query.get_or_404(post_id)
     if action == 'like':
