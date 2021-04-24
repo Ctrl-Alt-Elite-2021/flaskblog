@@ -264,3 +264,12 @@ def like_action(post_id, action):
         post.likes -= 1
         db.session.commit()
     return redirect(request.referrer)
+
+
+# most popular route
+@app.route('/most_popular')
+def most_popular():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+
+    return render_template('most_popular.html', posts=posts)
