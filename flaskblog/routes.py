@@ -10,7 +10,9 @@ from flaskblog.models import User, Post, Comments
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Mail,Message
 
-engine = create_engine("mysql+mysqlconnector://admin3:@GitPa$$w0rd#@54.74.234.11/finalproject_group3")
+
+
+engine = create_engine("mysql+mysqlconnector://root:hello!@1localhost:3306/finalproject_group3")
 Post.metadata.bind = engine
 
 DBSession = sqlalchemy.orm.sessionmaker(bind=engine)

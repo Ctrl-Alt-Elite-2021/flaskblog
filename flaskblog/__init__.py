@@ -7,7 +7,8 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'arandomstring'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://admin3:@GitPa$$w0rd#@54.74.234.11/finalproject_group3"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://root:hello!@localhost:3306/finalproject_group3"
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
